@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="#">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Soundboard</title>
+    <style>
+        
+        .soundboard {
+            width: 150px;
+            height: 100px;
+            padding: 5px;
+            border: 1px solid black;
+            border-radius: 5%;
+            display: flex;
+            margin: 30px;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            background-color: rgb(32, 32, 32);
+            color: white;
+            font-size: 1.2rem;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: 600;
+            box-shadow: 5px 5px 10px 0px grey;
+            transition: all 0.20s;
+                
+        }
+
+        .soundboard--play {
+            transform: scale(0.95);
+            box-shadow: 3px 3px 10px 0px grey;
+        }
+
+        .soundboard__key {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        kbd {
+            font-size: 3rem;
+            font-weight: 500;
+        }
+
+    </style>
+</head>
+<body>
+<!-- 
+    <kbd> </kbd> = definerer en keyboard input + default font er monospace
+        Finnes også noe lignende koder:
+            - <code> </code>
+            - <samp> </samp>
+            - <var> </var>
+            - <pre> </pre>
+
+    <span> </span> = blir brukt til å fargelegge en del av teksten 
+        Eksempel: 
+            - <p>My mother has <span style="color:blue">blue</span> eyes.</p>
+
+    
+    data attributes | daya=* = brukes hvis du vil lagre ekstra informasjon i nettsiden eller app
+        Syntsx: 
+            - <element data-*="somevalue">
+
+        Eksempel:  
+            - div data-key="49" class="key">  (henter alle elementene med navn data-key="49" )
+
+    windows.addEventListeneer = hvis event skjer, skal function starte
+        Eksempel:
+            - window.addEventListener('keydown', function(keyData) {
+            }
+
+    .querySelector() = velger element på CSS selector måten, altså, du kan kalle elementer etter:
+            - <p></p> = .querySelector("p")
+            - <p class="classname"></p> = .querySelector("p.classname")
+            - <p id="idName"></p> = .querySelector("#idName")
+            - <div> <p> </p> </div> = .querySelector("#idName") | henter første element med <div> inni <p>
+            - <a href="#" target="_blank"> link </a> = .querySelector("a[target]") | henter første element med <a> + target attribute
+            - <p class="classname" ></p> = .querySelector("a[target]") | henter første element med <a> + target attribute
+    
+    .querySelectorAll() = kalle alle elementer etter ^
+
+    event.keyCode = henter hvilken tast du trykket på fra event 
+
+    setTimeout(function() { en handling }, 0.07) = 
+        Du kan få en funksjon til å starte etter en tidspunkt, 
+        som å fjerne en style etter du har klikket på noe
+
+    Array.prototype.forEach() = fungerer som for loop? undersøk mer senere
+        Eksempel:
+        - const array1 = ['a', 'b', 'c'];
+        array1.forEach(element => console.log(element));
+        // expected output: "a"
+        // expected output: "b"
+        // expected output: "c"
+
+    transitionend event = gjør noe med element, når css transition har endt
+        https://www.w3schools.com/jsref/event_transitionend.asp
+-->
+
+    <div data-key="49" class="soundboard">
+        <div class="soundboard__key">
+             <kbd>1</kbd>
+             <span> Anime wow </span>
+        </div>
+    </div>
+
+    <div data-key="50" class="soundboard">
+        <div class="soundboard__key">
+             <kbd>2</kbd>
+             <span> Run </span>
+        </div>
+    </div>
+
+    <div data-key="51" class="soundboard">
+        <div class="soundboard__key">
+             <kbd>3</kbd>
+             <span> Fail </span>
+        </div>
+    </div>
+
+    <div data-key="52" class="soundboard">
+        <div class="soundboard__key">
+             <kbd>4</kbd>
+             <span> Gas gas gas</span>
+        </div>
+    </div>
+
+    <div data-key="53" class="soundboard">
+        <div class="soundboard__key">
+             <kbd>5</kbd>
+             <span> We got him </span>
+        </div>
+    </div>
+
+    <div data-key="54" class="soundboard">
+        <div class="soundboard__key">
+             <kbd>6</kbd>
+             <span> Snoop dogg </span>
+        </div>
+    </div>
+
+    <audio data-key="49" src="soundtracks/anime-wow-sound-effect-mp3cut.mp3"></audio>
+    <audio data-key="50" src="soundtracks/awolnation-run-audio-mp3cut_TdXTLux.mp3"></audio>
+    <audio data-key="51" src="soundtracks/fail-sound-effect.mp3"></audio>
+    <audio data-key="52" src="soundtracks/gas-gas-gaslqshort.mp3"></audio>
+    <audio data-key="53" src="soundtracks/ladies-and-gentlemen-we-got-him-song.mp3"></audio>
+    <audio data-key="54" src="soundtracks/tmpbxydyrz3.mp3"></audio>
+
+    <script>
+        //Key down function som sender hvilken tast du trykket på + starter playsound funksjon
+        window.addEventListener('keydown', playSound);
+        
+        function playSound(event) {
+            const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`)
+            const key = document.querySelector(`.soundboard[data-key="${event.keyCode}"]`) //henter .soundboar_key sin data-key 
+
+            //hvis audio ikke har verdi (alså null)
+            if(!audio) return // stopper funksjon
+
+            //starter audio på tidspunkt 0, altså starter på nytt
+            audio.currentTime = 0;
+            
+            //Spiller av det som er inni audio element
+            audio.play();
+
+            key.classList.add('soundboard--play');  
+        }
+
+        function removeTransition(event) {
+            // console.log(event)
+            if (event.propertyName !== 'transform') return; //stop og hopp over funksjon hvis event.propertyName ikke er lik transform
+            // console.log(this) //du kan bruke this for å hente event sin div, hvis du er usikker, console.log(this)
+            this.classList.remove('soundboard--play')
+        }
+
+        const keys = document.querySelectorAll('.soundboard');
+        keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+
+    </script>
+</body>
+</html>
