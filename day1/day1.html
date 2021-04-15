@@ -50,68 +50,81 @@
 </head>
 <body>
 <!-- 
-    <kbd> </kbd> = definerer en keyboard input + default font er monospace
-        Finnes også noe lignende koder:
-            - <code> </code>
-            - <samp> </samp>
-            - <var> </var>
-            - <pre> </pre>
+<kbd> </kbd> = definerer en keyboard input + default font er monospace
+    Finnes også noe lignende koder:
+        - <code> </code>
+        - <samp> </samp>
+        - <var> </var>
+        - <pre> </pre>
 
 
-    <span> </span> = blir brukt til å fargelegge en del av teksten 
-        Eksempel: 
-            - <p>My mother has <span style="color:blue">blue</span> eyes.</p>
-
-    
-    data attributes | daya=* = brukes hvis du vil lagre ekstra informasjon i nettsiden eller app
-        Syntsx: 
-            - <element data-*="somevalue">
-        Eksempel:  
-            - div data-key="49" class="key">  (henter alle elementene med navn data-key="49" )
+<span> </span> = blir brukt til å fargelegge en del av teksten 
+    Eksempel: 
+        - <p>My mother has <span style="color:blue">blue</span> eyes.</p>
 
 
-    windows.addEventListeneer = hvis event skjer, skal function starte
-        Eksempel:
-            - window.addEventListener('keydown', function(keyData) {
-            }
+data attributes | daya=* = brukes hvis du vil lagre ekstra informasjon i nettsiden eller app
+    Syntsx: 
+        - <element data-*="somevalue">
+    Eksempel:  
+        - div data-key="49" class="key">  (henter alle elementene med navn data-key="49" )
 
 
-    .querySelector() = velger element på CSS selector måten, altså, du kan kalle elementer etter:
-            - <p></p> = .querySelector("p")
-            - <p class="classname"></p> = .querySelector("p.classname")
-            - <p id="idName"></p> = .querySelector("#idName")
-            - <div> <p> </p> </div> = .querySelector("#idName") | henter første element med <div> inni <p>
-            - <a href="#" target="_blank"> link </a> = .querySelector("a[target]") | henter første element med <a> + target attribute
-            - <p class="classname" ></p> = .querySelector("a[target]") | henter første element med <a> + target attribute
-    
-
-    .querySelectorAll() = kalle alle elementer etter ^
+windows.addEventListeneer = hvis event skjer, skal function starte
+    Eksempel:
+        - window.addEventListener('keydown', function(keyData) {
+        }
 
 
-    event.keyCode = henter hvilken tast du trykket på fra event 
+.querySelector() = velger element på CSS selector måten, altså, du kan kalle elementer etter:
+        - <p></p> = .querySelector("p")
+        - <p class="classname"></p> = .querySelector("p.classname")
+        - <p id="idName"></p> = .querySelector("#idName")
+        - <div> <p> </p> </div> = .querySelector("#idName") | henter første element med <div> inni <p>
+        - <a href="#" target="_blank"> link </a> = .querySelector("a[target]") | henter første element med <a> + target attribute
+        - <p class="classname" ></p> = .querySelector("a[target]") | henter første element med <a> + target attribute
 
 
-    setTimeout(function() { en handling }, 0.07) = 
-        Du kan få en funksjon til å starte etter en tidspunkt, 
-        som å fjerne en style etter du har klikket på noe
+.querySelectorAll() = kalle alle elementer etter ^
 
 
-    Array.prototype.forEach() = looper i igjennom arrays
-        Syntax:
-            - array.forEach(function(currentValue, index, arr), thisValue)
+event.keyCode = henter hvilken tast du trykket på fra event 
 
-        Eksempel:
-        - const array1 = ['a', 'b', 'c'];
-        array1.forEach(element => console.log(element));
-        // expected output: "a"
-        // expected output: "b"
-        // expected output: "c"
 
+setTimeout(function() { en handling }, 0.07) = 
+    Du kan få en funksjon til å starte etter en tidspunkt, 
+    som å fjerne en style etter du har klikket på noe
+
+
+Array.prototype.forEach() = looper i igjennom arrays
+    Syntax:
+        - array.forEach(function(currentValue, index, arr), thisValue)
         
-    transitionend event = gjør noe med element, når css transition har endt
-        https://www.w3schools.com/jsref/event_transitionend.asp
+    Eksempel: 
+        - itemArray.forEach(item => item + 2)            
+        currentValue = du kan selv velge navn til currentValue. item = itemArray
+        index = antall ganger loop skal gå som er bestemt av currentValue.length. 
+        thisValue = gjør noe med hver array element, eksempel pluss med 2 på hver item
+        
+    Eksempel 2:
+        - henter alle divs
+        const squares = document.querySelectorAll('div')
 
-    
+        - looper igjennom square array antall divs ganger >
+            Legger til eventListener, der hvis man trykker på div,
+            skal function clickOutcome starte
+        square.forEach(square => {
+            square.addEventListener('click', clickOutcome)
+        })
+
+        function clickOutcome() {
+            alert('I have been clicked!')
+        }
+
+transitionend event = gjør noe med element, når css transition har endt
+    https://www.w3schools.com/jsref/event_transitionend.asp
+
+
     
 -->
 
