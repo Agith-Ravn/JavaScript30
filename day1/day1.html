@@ -57,6 +57,7 @@
             - <var> </var>
             - <pre> </pre>
 
+
     <span> </span> = blir brukt til å fargelegge en del av teksten 
         Eksempel: 
             - <p>My mother has <span style="color:blue">blue</span> eyes.</p>
@@ -65,14 +66,15 @@
     data attributes | daya=* = brukes hvis du vil lagre ekstra informasjon i nettsiden eller app
         Syntsx: 
             - <element data-*="somevalue">
-
         Eksempel:  
             - div data-key="49" class="key">  (henter alle elementene med navn data-key="49" )
+
 
     windows.addEventListeneer = hvis event skjer, skal function starte
         Eksempel:
             - window.addEventListener('keydown', function(keyData) {
             }
+
 
     .querySelector() = velger element på CSS selector måten, altså, du kan kalle elementer etter:
             - <p></p> = .querySelector("p")
@@ -82,15 +84,22 @@
             - <a href="#" target="_blank"> link </a> = .querySelector("a[target]") | henter første element med <a> + target attribute
             - <p class="classname" ></p> = .querySelector("a[target]") | henter første element med <a> + target attribute
     
+
     .querySelectorAll() = kalle alle elementer etter ^
 
+
     event.keyCode = henter hvilken tast du trykket på fra event 
+
 
     setTimeout(function() { en handling }, 0.07) = 
         Du kan få en funksjon til å starte etter en tidspunkt, 
         som å fjerne en style etter du har klikket på noe
 
-    Array.prototype.forEach() = fungerer som for loop? undersøk mer senere
+
+    Array.prototype.forEach() = looper i igjennom arrays
+        Syntax:
+            - array.forEach(function(currentValue, index, arr), thisValue)
+
         Eksempel:
         - const array1 = ['a', 'b', 'c'];
         array1.forEach(element => console.log(element));
@@ -98,8 +107,12 @@
         // expected output: "b"
         // expected output: "c"
 
+        
     transitionend event = gjør noe med element, når css transition har endt
         https://www.w3schools.com/jsref/event_transitionend.asp
+
+    
+    
 -->
 
     <div data-key="49" class="soundboard">
@@ -156,18 +169,11 @@
         window.addEventListener('keydown', playSound);
         
         function playSound(event) {
-            const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`)
-            const key = document.querySelector(`.soundboard[data-key="${event.keyCode}"]`) //henter .soundboar_key sin data-key 
-
-            //hvis audio ikke har verdi (alså null)
-            if(!audio) return // stopper funksjon
-
-            //starter audio på tidspunkt 0, altså starter på nytt
-            audio.currentTime = 0;
-            
-            //Spiller av det som er inni audio element
-            audio.play();
-
+            const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`) //henter audio
+            const key = document.querySelector(`.soundboard[data-key="${event.keyCode}"]`) //henter div med .soundboar_key + data-key 
+            if(!audio) return  //hvis audio ikke har verdi (alså null) > stopper funksjon
+            audio.currentTime = 0;  //starter audio på tidspunkt 0, altså starter på nytt
+            audio.play();  //Spiller av det som er inni audio element
             key.classList.add('soundboard--play');  
         }
 
@@ -178,7 +184,9 @@
             this.classList.remove('soundboard--play')
         }
 
+        //Henter alle divs med navn classname soundboard med querySelectorAll
         const keys = document.querySelectorAll('.soundboard');
+
         keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 
 
