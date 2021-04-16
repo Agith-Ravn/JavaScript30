@@ -8,6 +8,22 @@
     <title>Meme Soundboard</title>
     <style>
         
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .soundboard-container {
+            margin: auto;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            background: rgb(34,193,195);
+            background: linear-gradient(117deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+        }
+
         .soundboard {
             width: 150px;
             height: 100px;
@@ -15,7 +31,7 @@
             border: 1px solid black;
             border-radius: 5%;
             display: flex;
-            margin: 30px;
+            margin:  0 50px 0 0;
             justify-content: center;
             align-items: center;
             cursor: pointer;
@@ -24,7 +40,7 @@
             font-size: 1.2rem;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             font-weight: 600;
-            box-shadow: 5px 5px 10px 0px grey;
+            box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.473);
             transition: all 0.20s;
                 
         }
@@ -127,46 +143,47 @@ transitionend event = gjør noe med element, når css transition har endt
 
     
 -->
-
-    <div data-key="49" class="soundboard">
-        <div class="soundboard__key">
-             <kbd>1</kbd>
-             <span> Anime wow </span>
+    <div class="soundboard-container">
+        <div data-key="49" class="soundboard">
+            <div class="soundboard__key">
+                <kbd>1</kbd>
+                <span> Anime wow </span>
+            </div>
         </div>
-    </div>
 
-    <div data-key="50" class="soundboard">
-        <div class="soundboard__key">
-             <kbd>2</kbd>
-             <span> Run </span>
+        <div data-key="50" class="soundboard">
+            <div class="soundboard__key">
+                <kbd>2</kbd>
+                <span> Run </span>
+            </div>
         </div>
-    </div>
 
-    <div data-key="51" class="soundboard">
-        <div class="soundboard__key">
-             <kbd>3</kbd>
-             <span> Fail </span>
+        <div data-key="51" class="soundboard">
+            <div class="soundboard__key">
+                <kbd>3</kbd>
+                <span> Fail </span>
+            </div>
         </div>
-    </div>
 
-    <div data-key="52" class="soundboard">
-        <div class="soundboard__key">
-             <kbd>4</kbd>
-             <span> Gas gas gas</span>
+        <div data-key="52" class="soundboard">
+            <div class="soundboard__key">
+                <kbd>4</kbd>
+                <span> Gas gas gas</span>
+            </div>
         </div>
-    </div>
 
-    <div data-key="53" class="soundboard">
-        <div class="soundboard__key">
-             <kbd>5</kbd>
-             <span> We got him </span>
+        <div data-key="53" class="soundboard">
+            <div class="soundboard__key">
+                <kbd>5</kbd>
+                <span> We got him </span>
+            </div>
         </div>
-    </div>
 
-    <div data-key="54" class="soundboard">
-        <div class="soundboard__key">
-             <kbd>6</kbd>
-             <span> Snoop dogg </span>
+        <div data-key="54" class="soundboard">
+            <div class="soundboard__key">
+                <kbd>6</kbd>
+                <span> Snoop dogg </span>
+            </div>
         </div>
     </div>
 
