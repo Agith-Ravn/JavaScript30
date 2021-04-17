@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+        --color: #0f0346;
+        --spacing: 20px;
+        --blur: 0px;
+
+        }
+
+        .img-container {
+            width: 500px;
+            height: 300px;
+            border: solid;
+            border-width: var(--spacing);
+            border-color: var(--color);
+        }
+
+        img {
+            width: 500px;
+            height: 300px;
+            filter: blur(var(--blur));
+            object-fit: fill;
+        }
+
+        .edit-image-container {
+            margin: 5px 25px;
+            width: 500px;
+            display: flex;
+            align-items: center;
+        }
+
+        input {
+            margin-right: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+<!-- 
+    CSS Variables - var() function = 
+        - var() funksjon kan du lage variabler samme måte som med javaScript.
+        - De kan også bli forandret med kombinasjon av javaScript
+        - Alle CSS variabler må starte med -- (var, let og const i javascript)
+        - CSS variabler skal være inni :root {}
+
+        Eksempel: 
+            :root {
+            --blue: #1e90ff;      <- blue er variable navnet og #1e90ff er verdien inni
+            }
+
+            body { background-color: var(--blue); }      <- Når du bruker var(--blue); bruker den verdien inni --blue
+            
+    
+    Event: 
+        - Change = event registrerer forandring av foreksempel verdier
+        - Mousemove = event registrerer forandring etter musbevegelse
+
+
+    This + addEventListener = this betyr bare den verdien som blir sendt igjennom eventListener
+
+    data- attribute kan bli brukt til å lage custom attributes 
+          som blir lagret inni filen som object 
+          + kan hentes og forandret på med javascript senere.
+    
+    -->
+
+    <div class="edit-image-container">
+        <label> Spacing: </label>
+        <input type="range" name="spacing" max="200" value="20" data-unit="px">
+        
+        <label> Blur: </label>
+        <input type="range" name="blur" min="0" max="25" value="0" data-unit="px">
+        
+        <label> Color: </label>
+        <input type="color" name="color" value="#000000">
+    </div>
+
+    <div class="img-container">
+        <img src="images/pexels-janez-podnar-1424246.jpg" alt="">
+    </div>
+
+    </div>
+    <script>
+        const inputs = document.querySelectorAll('.edit-image-container input')
+        // console.log(inputs)
+
+        function editUpdate() {
+            let unit = this.dataset.unit || '';
+            // console.log(unit)
+            document.documentElement.style.setProperty(`--${this.name}`, this.value + unit);
+            console.log(this.name)
+        }
+
+        inputs.forEach(input => input.addEventListener('change', editUpdate));
+        inputs.forEach(input => input.addEventListener('mousemove', editUpdate));
+    </script>
+</body>
+</html>
