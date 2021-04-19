@@ -68,7 +68,19 @@
           som blir lagret inni filen som object 
           + kan hentes og forandret på med javascript senere.
     
-    -->
+    document.documentElement = henter hele html filen
+        - Prøv console.log(document.documentElement) for å forstå dette bedre
+        
+        
+    setProperty()
+        Syntax: 
+            object.setProperty(propertyname, value, priority)
+
+        Eksempel:
+            document.documentElement.style. setProperty()
+            - henter style fra html filen og setProperty() legger til eller endrer på eksisterende style
+        
+-->
 
     <div class="edit-image-container">
         <label> Spacing: </label>
@@ -87,18 +99,22 @@
 
     </div>
     <script>
+        //Henter alle inputs med querySelectorAll
         const inputs = document.querySelectorAll('.edit-image-container input')
-        // console.log(inputs)
-
+        
         function editUpdate() {
+            //Hent verdi fra this.dataset.unit hvis det er noe, ellers legg til ''
             let unit = this.dataset.unit || '';
-            // console.log(unit)
+
+            //henter CSS style og endrer spacing, blir, color verdi
             document.documentElement.style.setProperty(`--${this.name}`, this.value + unit);
-            console.log(this.name)
         }
 
+        //hver gang du endrer eller flytter mus mens du trykker, starter editUpdate funksjon
         inputs.forEach(input => input.addEventListener('change', editUpdate));
         inputs.forEach(input => input.addEventListener('mousemove', editUpdate));
+
+        // console.log(document.documentElement)
     </script>
 </body>
 </html>
