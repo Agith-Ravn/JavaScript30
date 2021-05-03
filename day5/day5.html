@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
+    <style>
+
+        html {
+            box-sizing: border-box;
+            background: #ffc600;
+            font-family: 'helvetica neue';
+            font-size: 20px;
+            font-weight: 200;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .img-panel-container {
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .img-panel {
+            background: #6B0F9C;
+            color: white;
+            text-align: center;
+            align-items: center;
+            transition:
+                font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+                flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+                background 0.2s;
+            font-size: 20px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .img-panel1 { background-image:url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500); }
+        .img-panel2 { background-image:url(https://source.unsplash.com/rFKUFzjPYiQ/1500x1500); }
+        .img-panel3 { background-image:url(https://images.unsplash.com/photo-1465188162913-8fb5709d6d57?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&w=1500&h=1500&fit=crop&s=967e8a713a4e395260793fc8c802901d); }
+        .img-panel4 { background-image:url(https://source.unsplash.com/ITjiVXcwVng/1500x1500); }
+        .img-panel5 { background-image:url(https://source.unsplash.com/3MNzGlQM7qs/1500x1500); }
+
+        /* (>) child selector | (*) selects all elements */
+        .panel > * {
+            margin: 0;
+            width: 100%;
+            transition: transform 0.5s;
+        }   
+
+
+    </style>
+</head>
+<body>
+
+    <div class="img-panel-container">
+        <div class="img-panel img-panel1">
+            <p>Hey</p>
+            <p>Let's</p>
+            <p>Dance</p>
+        </div>
+
+        <div class="img-panel img-panel2">
+            <p>Give</p>
+            <p>Take</p>
+            <p>Receive</p>
+        </div>
+
+        <div class="img-panel img-panel3">
+            <p>Experience</p>
+            <p>It</p>
+            <p>Today</p>
+        </div>
+
+        <div class="img-panel img-panel4">
+            <p>Give</p>
+            <p>All</p>
+            <p>You can</p>
+        </div>
+
+        <div class="img-panel img-panel5">
+            <p>Life</p>
+            <p>In</p>
+            <p>Motion</p>
+        </div>
+    </div>
+
+    <script>
+
+    </script>
+</body>
+</html>
