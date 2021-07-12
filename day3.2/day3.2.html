@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+        --color: #0f0346;
+        --spacing: 20px;
+        --blur: 0px;
+
+        }
+        .day3-container {
+            width: 900px;
+        }
+
+        .img-container {
+            width: 850px;
+            height: 300px;
+            border: solid;
+            border-width: var(--spacing);
+            border-color: var(--color);
+        }
+
+        img {
+            width: 850px;
+            height: 300px;
+            filter: blur(var(--blur));
+            object-fit: cover;
+        }
+
+        .edit-image-container {
+            width: 800px;
+            display: flex;
+            align-items: center;
+            margin: auto;
+            padding: 10px;
+            justify-content: space-around;
+        }
+
+        input {
+            margin-right: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="day3-container">
+        <div class="edit-image-container">
+            <label> Spacing: </label>
+            <input type="range" name="spacing" max="200" value="20" data-unit="px">
+
+            <label> Blur: </label>
+            <input type="range" name="blur" min="1" max="25" value="0" data-unit="px">
+
+            <label> Spacing: </label>
+            <input type="color" name="color" value="#000000">
+
+        </div>
+
+        <div class="img-container">
+            <img src="images/florent-lebrun-001-hyrule-plains.jpg" alt="">
+        </div>
+    </div>
+    <!-- 
+        - spaceing 
+        - blur
+        - color
+
+     -->
+
+    <script>
+        const allInputs = document.querySelectorAll(".edit-image-container input");
+
+        allInputs.forEach(input => input.addEventListener('change', editFrame));
+        allInputs.forEach(input => input.addEventListener('mousemove', editFrame));
+
+        function editFrame() {
+            let unit = this.dataset.unit || '';
+            document.documentElement.style.setProperty(`--${this.name}`, this.value + unit);
+        }
+
+    </script>
+</body>
+</html>
