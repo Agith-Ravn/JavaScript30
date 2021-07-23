@@ -20,6 +20,7 @@
             margin: 0;
         }
 
+        /* Velger alle elements */
         *, *:before, *:after {
             box-sizing: inherit;
         }
@@ -66,31 +67,33 @@
             align-items: center;
         }
 
-
+        /*Henter første child fra img-panel*/
         .img-panel > *:first-child { transform: translateY(-100%); }
         .img-panel.open-active > *:first-child { transform: translateY(0); }
 
+        /*Henter siste child fra img-panel*/
         .img-panel > *:last-child { transform: translateY(100%); }
         .img-panel.open-active > *:last-child { transform: translateY(0); }
 
-        .panel p {
+        .img-panel p {
             text-transform: uppercase;
             font-family: 'Amatic SC', cursive;
             text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
             font-size: 2em;
         }
         
-        .panel p:nth-child(2) {
+        .img-panel p:nth-child(2) {
             font-size: 4em;
         }
 
-        .panel.open {
+        /* Legger til denne når du trykker på et panel */
+        .img-panel.open {
             flex: 5;
             font-size: 40px;
         }
         
         @media only screen and (max-width: 600px) {
-            .panel p {
+            .img-panel p {
                 font-size: 1em;
             }
         }
@@ -132,6 +135,30 @@
     </div>
 
     <script>
+        const panels = document.querySelectorAll('.img-panel');
+
+        //Legger til eventListener til alle paneler - Gjør panel større effekt
+        panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+
+        //funksjon som åpner panel
+        function toggleOpen() {
+            // console.log('Hei')
+            // Husk! Du kan bruke this, når du bruker eventListener
+            this.classList.toggle('open')
+        }
+
+        //Legger til eventListener til alle paneler - Får fram mer tekst
+        panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+
+        //funksjon som åpner tekst
+        //Hva betyr e???
+        function toggleActive(e) {
+            // console.log(e.propertyName)
+            if (e.propertyName.includes('flex')) {
+                this.classList.toggle('open-active');
+            }
+        }
+
 
     </script>
 </body>
