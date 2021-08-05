@@ -27,18 +27,38 @@
     fetch(endpoint).then(blob => blob.json())
     .then(data => cities.push(...data))
 
-    function findMatches(wordToMatch, cities) {
-        return cities.filter(place =>)
-    }
-
     const searchInput = document.querySelector('.search');
     const suggestions = document.querySelector('.suggestions')
 
     //Event på input
     searchInput.addEventListener('input', displayMatches);
 
-    function displayMatches() {
+    //Finner steder etter hva du søker på input
+    function findMatches(wordToMatch, cities) {
+        //Filtrerer verdi fra cities array
+        return cities.filter(place => {
 
+            //RegExp blir brukt til å søke fram ord
+            const regex = new RegExp(wordToMatch, 'gi');
+            return place.city.match(regex) || place.state.match(regex)
+        });
+    }
+
+    //Viser match under input
+    function displayMatches() {
+        const matchArray = findMatches(this.value, cities)
+        const html = matchArray.map(place => {
+
+            //Hva skjer her???????
+            const regex = new RegExp(this.value, 'gi');
+            const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
+            const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
+        })
+    }
+
+    //Gjør om siffer til nummer med komma
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     }
 
 </script>
